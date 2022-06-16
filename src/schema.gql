@@ -10,6 +10,7 @@ type User {
 
 type Query {
   user(where: UserWhereInput, orderBy: [UserOrderByWithRelationInput!], cursor: UserWhereUniqueInput, take: Int, skip: Int, distinct: [UserScalarFieldEnum!]): User!
+  Select(where: UserWhereInput, orderBy: [UserOrderByWithRelationInput!], cursor: UserWhereUniqueInput, take: Int, skip: Int, distinct: [UserScalarFieldEnum!]): [User!]!
 }
 
 input UserWhereInput {
@@ -95,6 +96,7 @@ enum UserScalarFieldEnum {
 type Mutation {
   createUser(data: UserCreateInput!): User!
   Update(data: UserUpdateInput!, where: UserWhereUniqueInput!): User!
+  Delete(where: UserWhereUniqueInput!): User!
 }
 
 input UserCreateInput {

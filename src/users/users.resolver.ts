@@ -4,6 +4,8 @@ import { CreateOneUserArgs } from 'src/@generated/prisma-nestjs-graphql/user/cre
 import { UsersService } from 'src/users/users.service';
 import { FindFirstUserArgs } from 'src/@generated/prisma-nestjs-graphql/user/find-first-user.args';
 import { UpdateOneUserArgs } from 'src/@generated/prisma-nestjs-graphql/user/update-one-user.args';
+import { DeleteOneUserArgs } from 'src/@generated/prisma-nestjs-graphql/user/delete-one-user.args';
+import { FindManyUserArgs } from 'src/@generated/prisma-nestjs-graphql/user/find-many-user.args';
 
 @Resolver(() => User)
 export class UsersResolver {
@@ -28,5 +30,19 @@ export class UsersResolver {
         @Args() args: UpdateOneUserArgs
     ) {
         return this.userService.Update(args)
+    }
+
+    @Mutation(() => User)
+    Delete(
+        @Args() args: DeleteOneUserArgs
+    ) {
+        return this.userService.Delete(args)
+    }
+
+    @Query(() => [User])
+    Select(
+        @Args() args: FindManyUserArgs
+    ) {
+        return this.userService.Select(args)
     }
 }
